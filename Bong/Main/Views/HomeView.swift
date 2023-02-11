@@ -19,6 +19,7 @@ import FirebaseAuth
 struct HomeView: View {
     @EnvironmentObject private var challengesvm: ChallengesViewModel
     @EnvironmentObject private var userManager: UserManager
+    @Environment(\.presentationMode) private var presentationMode
     
     @State private var isShowingScanner = false
     @State private var isPresentingScanner = false
@@ -92,15 +93,9 @@ struct HomeView: View {
                     .fullScreenCover(isPresented: $isPresentingGroupCreator) {
                         CreateGroupView()
                     }
-                    
-                    .sheet(isPresented: $isPresentingScanner) {
-                        CodeScannerView(codeTypes: [.qr]) { response in
-                            if case let .success(result) = response {
-                                scannedCode = result.string
-                                isPresentingScanner = false
-                            }
-                        }
-                    }
+                    .fullScreenCover(isPresented: $isPresentingScanner, content: {
+                        cameraView
+                    })
                 }
             }
         }
@@ -122,6 +117,31 @@ struct HomeView: View {
         isShowingScanner = false
         // more code to come
     }
+    
+    private var cameraView: some View {
+        ZStack(alignment: .topLeading) {
+            cancelButton
+            
+            CodeScannerView(codeTypes: [.qr]) { response in
+                if case let .success(result) = response {
+                    scannedCode = result.string
+                    isPresentingScanner = false
+                }
+            }
+        }
+    }
+    
+    private var cancelButton: some View {
+        Button {
+            self.presentationMode.wrappedValue.dismiss()
+        } label: {
+            Image(systemName: "x.circle.fill")
+                .font(.system(size: 20))
+                .padding()
+        }
+
+    }
+    
 }
 
 struct HomeCardModifier: ViewModifier {
