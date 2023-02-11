@@ -27,31 +27,6 @@ struct HomeView: View {
     @State private var scannedCode: String?
     @State var isInGroup = false
     
-    // 1
-    //var userId = ""
-    // 2
-     //private let authenticationService = AuthenticationService()
-    // 3
-    //private var cancellables: Set<AnyCancellable> = []
-    
-//    init() {
-//      // 1
-//      authenticationService.$user
-//        .compactMap { user in
-//          user?.uid
-//        }
-//        .assign(to: \.userId, on: self)
-//        .store(in: &cancellables)
-//
-//      // 2
-//      authenticationService.$user
-//        .receive(on: DispatchQueue.main)
-//        .sink { [weak self] _ in
-//          // 3
-//          self?.get()
-//        }
-//        .store(in: &cancellables)
-//    }
     
     var body: some View {
         if (isInGroup) {

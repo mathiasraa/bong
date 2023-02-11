@@ -36,6 +36,8 @@
 		4F3C19C429974168002C3694 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3C19C329974168002C3694 /* User.swift */; };
 		4F3C19C6299743EC002C3694 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3C19C5299743EC002C3694 /* Group.swift */; };
 		4F51F9F029974E1800756E9E /* CreateGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F51F9EF29974E1700756E9E /* CreateGroupView.swift */; };
+		4F51F9F22997764700756E9E /* GroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F51F9F12997764700756E9E /* GroupView.swift */; };
+		4F51F9F4299778ED00756E9E /* GroupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F51F9F3299778ED00756E9E /* GroupManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +80,8 @@
 		4F3C19C329974168002C3694 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		4F3C19C5299743EC002C3694 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		4F51F9EF29974E1700756E9E /* CreateGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupView.swift; sourceTree = "<group>"; };
+		4F51F9F12997764700756E9E /* GroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupView.swift; sourceTree = "<group>"; };
+		4F51F9F3299778ED00756E9E /* GroupManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +197,7 @@
 				4F3C193E2994DC9F002C3694 /* ContentView.swift */,
 				4F3C198C2995AF41002C3694 /* HomeView.swift */,
 				4F51F9EF29974E1700756E9E /* CreateGroupView.swift */,
+				4F51F9F12997764700756E9E /* GroupView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -211,6 +216,7 @@
 			children = (
 				4F3C19A92995C9F4002C3694 /* ChallengesViewModel.swift */,
 				4F3C19C129973B96002C3694 /* UserManager.swift */,
+				4F51F9F3299778ED00756E9E /* GroupManager.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -365,6 +371,7 @@
 			files = (
 				4F3C1988299581BE002C3694 /* SheetView.swift in Sources */,
 				4F3C19AA2995C9F4002C3694 /* ChallengesViewModel.swift in Sources */,
+				4F51F9F22997764700756E9E /* GroupView.swift in Sources */,
 				4F51F9F029974E1800756E9E /* CreateGroupView.swift in Sources */,
 				4F3C198F2995B122002C3694 /* Card.swift in Sources */,
 				4F3C193F2994DC9F002C3694 /* ContentView.swift in Sources */,
@@ -376,6 +383,7 @@
 				4F3C198D2995AF41002C3694 /* HomeView.swift in Sources */,
 				4F3C19C229973B96002C3694 /* UserManager.swift in Sources */,
 				4F3C193D2994DC9F002C3694 /* BongApp.swift in Sources */,
+				4F51F9F4299778ED00756E9E /* GroupManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
