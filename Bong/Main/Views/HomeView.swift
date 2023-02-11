@@ -106,27 +106,43 @@ struct HomeView: View {
     }
     
     private var cameraView: some View {
-        ZStack(alignment: .topLeading) {
-            cancelButton
-            
-            CodeScannerView(codeTypes: [.qr]) { response in
-                if case let .success(result) = response {
-                    scannedCode = result.string
-                    isPresentingScanner = false
+        ZStack(alignment: .bottom) {
+            ZStack(alignment: .topLeading) {
+                CodeScannerView(codeTypes: [.qr]) { response in
+                    if case let .success(result) = response {
+                        scannedCode = result.string
+                        isPresentingScanner = false
+                    }
                 }
+                .edgesIgnoringSafeArea(.all)
+                .ignoresSafeArea(.all)
+                
+                cancelButton
+            }
+            
+            withAnimation {
+                cameraHelp
             }
         }
     }
     
     private var cancelButton: some View {
         Button {
-            self.presentationMode.wrappedValue.dismiss()
+            isPresentingScanner.toggle()
         } label: {
             Image(systemName: "x.circle.fill")
-                .font(.system(size: 20))
+                .font(.system(size: 35))
+                .foregroundColor(.pink)
                 .padding()
         }
 
+    }
+    
+    private var cameraHelp: some View {
+        Text("Please scan a valid QR code to find a group :)")
+            .foregroundColor(.white)
+            .capsuleStyle(.pink)
+            .padding()
     }
     
 }
