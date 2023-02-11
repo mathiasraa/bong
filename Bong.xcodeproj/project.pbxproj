@@ -37,6 +37,7 @@
 		4F51F9F029974E1800756E9E /* CreateGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F51F9EF29974E1700756E9E /* CreateGroupView.swift */; };
 		4F51F9F22997764700756E9E /* GroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F51F9F12997764700756E9E /* GroupView.swift */; };
 		4F51F9F4299778ED00756E9E /* GroupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F51F9F3299778ED00756E9E /* GroupManager.swift */; };
+		B717C62329977D4C0005D464 /* Extentions .swift in Sources */ = {isa = PBXBuildFile; fileRef = B717C62229977D4C0005D464 /* Extentions .swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +81,7 @@
 		4F51F9EF29974E1700756E9E /* CreateGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupView.swift; sourceTree = "<group>"; };
 		4F51F9F12997764700756E9E /* GroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupView.swift; sourceTree = "<group>"; };
 		4F51F9F3299778ED00756E9E /* GroupManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupManager.swift; sourceTree = "<group>"; };
+		B717C62229977D4C0005D464 /* Extentions .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extentions .swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,7 +144,6 @@
 			children = (
 				B717C61F2997790C0005D464 /* Utilities */,
 				4F3C19BD29973A69002C3694 /* Main */,
-				B717C61D299776BB0005D464 /* GoogleService-Info.plist */,
 				4F3C193C2994DC9F002C3694 /* BongApp.swift */,
 				4F3C19402994DCA0002C3694 /* Assets.xcassets */,
 				4F3C19422994DCA0002C3694 /* Preview Content */,
@@ -223,7 +224,7 @@
 		B717C61F2997790C0005D464 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				B717C6202997791B0005D464 /* Extensions.swift */,
+				B717C62229977D4C0005D464 /* Extentions .swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -350,7 +351,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F3C19442994DCA0002C3694 /* Preview Assets.xcassets in Resources */,
-				B717C61E299776BB0005D464 /* GoogleService-Info.plist in Resources */,
 				4F3C19412994DCA0002C3694 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -389,6 +389,7 @@
 				4F3C19C429974168002C3694 /* User.swift in Sources */,
 				4F3C198D2995AF41002C3694 /* HomeView.swift in Sources */,
 				4F3C19C229973B96002C3694 /* UserManager.swift in Sources */,
+				B717C62329977D4C0005D464 /* Extentions .swift in Sources */,
 				4F3C193D2994DC9F002C3694 /* BongApp.swift in Sources */,
 				4F51F9F4299778ED00756E9E /* GroupManager.swift in Sources */,
 			);
