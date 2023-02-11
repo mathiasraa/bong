@@ -52,7 +52,7 @@ struct CreateGroupView: View {
                 .fontWeight(.bold)
                 .disableAutocorrection(true)
                 Button{
-                    createGroup(group: Group(name: groupName))
+                    createGroup(group: Group(id: UUID().uuidString, name: groupName))
                 } label: {
                     Text("Create group")
                         .foregroundColor(.white)
@@ -80,10 +80,23 @@ struct CreateGroupView: View {
     private func createGroup(group: Group) {
         let ref = db.collection("groups")
         let docRef = ref.addDocument(data: [
+            "id": group.id,
             "name" : group.name
         ])
         
+        let uid = Auth.auth().currentUser?.uid
         
+        if let uid = uid {
+            db.collection("users").whereField("id", isEqualTo: uid).getDocuments { (result, error) in
+                if error == nil{
+                    for document in result!.documents{
+                        //document.setValue("1", forKey: "isolationDate")
+                        db.collection("users").document(document.documentID).setData([ "groupID": docRef.documentID ], merge: true)
+                    }
+                }
+            }
+            
+        }
     }
 }
 

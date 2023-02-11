@@ -8,5 +8,6 @@
 import Foundation
 
 struct Group: Codable, Identifiable {
+    var id: String? = UUID().uuidString
     let name: String
 }

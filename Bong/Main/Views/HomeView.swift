@@ -79,6 +79,18 @@ struct HomeView: View {
                     .tint(.black)
                     
                     Button{
+                        userManager.signOut()
+                    } label: {
+                        Text("Logg ut")
+                            .foregroundColor(.white)
+                            .fontWeight(.bold)
+                            .fontDesign(.monospaced)
+                            .padding(5)
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .tint(.black)
+                    
+                    Button{
                         isPresentingScanner = true
                     } label: {
                         Text("Join a group")

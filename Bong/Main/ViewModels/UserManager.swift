@@ -9,22 +9,41 @@ import Foundation
 import FirebaseAuth
 import Firebase
 import SwiftUI
+import FirebaseFirestoreSwift
 
 class UserManager: ObservableObject {
     private let db = Firestore.firestore()
+    @Published var user: User?
     
     func signIn() async {
-        if Auth.auth().currentUser != nil {
-            signOut()
+        if Auth.auth().currentUser == nil {
+            do {
+                try await Auth.auth().signInAnonymously()
+            } catch {
+                print(error.localizedDescription)
+            }
+            await addUser()
         }
-        
-        do {
-            try await Auth.auth().signInAnonymously()
-        } catch {
-            print(error.localizedDescription)
+        fetchUser()
+    }
+    
+    func fetchUser() {
+        db.collection("users").whereField("id", isEqualTo: Auth.auth().currentUser?.uid ?? "").addSnapshotListener { querySnapshot, error in
+            guard let documents = querySnapshot?.documents else {
+                print("No documents")
+                return
+            }
+            
+            for document in documents {
+                do {
+                    let fethcedUser = try document.data(as: User.self)
+                    self.user = fethcedUser
+                } catch {
+                    try? Auth.auth().signOut()
+                    print(error.localizedDescription)
+                }
+            }
         }
-        await addUser()
-        
     }
     
     func getUserID() -> String {
@@ -38,13 +57,15 @@ class UserManager: ObservableObject {
         if let uid = uid {
             do {
                 try await ref.document(uid).setData([
-                    "uid": uid
+                    "id": uid
                 ])
             }
             catch {
                 print(error.localizedDescription)
             }
         }
+        
+        fetchUser()
         
         //        if let uid = uid {
         //            ref.addDocument(data: [
@@ -53,7 +74,7 @@ class UserManager: ObservableObject {
         //        }
     }
     
-    private func signOut() {
+    func signOut() {
         do {
             try Auth.auth().signOut()
         } catch {
