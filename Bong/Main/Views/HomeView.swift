@@ -130,18 +130,24 @@ struct HomeView: View {
         Button {
             isPresentingScanner.toggle()
         } label: {
-            Image(systemName: "x.circle.fill")
-                .font(.system(size: 35))
-                .foregroundColor(.pink)
-                .padding()
+            Image(systemName: "xmark")
+                .font(.system(size: 20))
+                .fontWeight(.bold)
+                .foregroundColor(.white)
+                .padding(5)
         }
+        .buttonStyle(.borderedProminent)
+        .tint(.black)
+        .padding([.leading])
 
     }
     
     private var cameraHelp: some View {
-        Text("Please scan a valid QR code to find a group :)")
+        Text("Please scan a valid QR code to find a group.")
+            .fontDesign(.monospaced)
+            .fontWeight(.semibold)
             .foregroundColor(.white)
-            .capsuleStyle(.pink)
+            .rectStyle(.black)
             .padding()
     }
     

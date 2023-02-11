@@ -37,6 +37,7 @@
 		4F51F9F029974E1800756E9E /* CreateGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F51F9EF29974E1700756E9E /* CreateGroupView.swift */; };
 		4F51F9F22997764700756E9E /* GroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F51F9F12997764700756E9E /* GroupView.swift */; };
 		4F51F9F4299778ED00756E9E /* GroupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F51F9F3299778ED00756E9E /* GroupManager.swift */; };
+		4F51F9F629977FE700756E9E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4F51F9F529977FE700756E9E /* GoogleService-Info.plist */; };
 		B717C62329977D4C0005D464 /* Extentions .swift in Sources */ = {isa = PBXBuildFile; fileRef = B717C62229977D4C0005D464 /* Extentions .swift */; };
 /* End PBXBuildFile section */
 
@@ -81,6 +82,7 @@
 		4F51F9EF29974E1700756E9E /* CreateGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupView.swift; sourceTree = "<group>"; };
 		4F51F9F12997764700756E9E /* GroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupView.swift; sourceTree = "<group>"; };
 		4F51F9F3299778ED00756E9E /* GroupManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupManager.swift; sourceTree = "<group>"; };
+		4F51F9F529977FE700756E9E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B717C62229977D4C0005D464 /* Extentions .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extentions .swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -146,6 +148,7 @@
 				4F3C19BD29973A69002C3694 /* Main */,
 				4F3C193C2994DC9F002C3694 /* BongApp.swift */,
 				4F3C19402994DCA0002C3694 /* Assets.xcassets */,
+				4F51F9F529977FE700756E9E /* GoogleService-Info.plist */,
 				4F3C19422994DCA0002C3694 /* Preview Content */,
 				4F3C1987299581BE002C3694 /* SheetView.swift */,
 				4F3C198E2995B122002C3694 /* Card.swift */,
@@ -352,6 +355,7 @@
 			files = (
 				4F3C19442994DCA0002C3694 /* Preview Assets.xcassets in Resources */,
 				4F3C19412994DCA0002C3694 /* Assets.xcassets in Resources */,
+				4F51F9F629977FE700756E9E /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
