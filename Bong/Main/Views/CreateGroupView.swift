@@ -21,6 +21,7 @@ struct CustomTextFieldStyle: TextFieldStyle {
 struct CreateGroupView: View {
     //1
     @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject private var groupManager: GroupManager
     
     @State private var groupName: String = ""
     private let db = Firestore.firestore()
@@ -52,7 +53,7 @@ struct CreateGroupView: View {
                 .fontWeight(.bold)
                 .disableAutocorrection(true)
                 Button{
-                    createGroup(group: Group(id: UUID().uuidString, name: groupName))
+                    groupManager.createGroup(group: Group(id: UUID().uuidString, name: groupName))
                 } label: {
                     Text("Create group")
                         .foregroundColor(.white)
@@ -73,28 +74,6 @@ struct CreateGroupView: View {
                 .tint(.black)
             }
             Spacer()
-            
-        }
-    }
-    
-    private func createGroup(group: Group) {
-        let ref = db.collection("groups")
-        let docRef = ref.addDocument(data: [
-            "id": group.id,
-            "name" : group.name
-        ])
-        
-        let uid = Auth.auth().currentUser?.uid
-        
-        if let uid = uid {
-            db.collection("users").whereField("id", isEqualTo: uid).getDocuments { (result, error) in
-                if error == nil{
-                    for document in result!.documents{
-                        //document.setValue("1", forKey: "isolationDate")
-                        db.collection("users").document(document.documentID).setData([ "groupID": docRef.documentID ], merge: true)
-                    }
-                }
-            }
             
         }
     }

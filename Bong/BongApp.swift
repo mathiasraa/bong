@@ -16,6 +16,7 @@ struct BongApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
     @StateObject private var userManager = UserManager()
+    @StateObject private var groupManager = GroupManager()
     @StateObject private var challengesvm = ChallengesViewModel()
     var body: some Scene {
         WindowGroup {
@@ -23,6 +24,7 @@ struct BongApp: App {
                 ContentView()
                     .environmentObject(challengesvm)
                     .environmentObject(userManager)
+                    .environmentObject(groupManager)
             }
         }
     }

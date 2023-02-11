@@ -8,13 +8,18 @@
 import SwiftUI
 
 struct QRGeneratorView: View {
-    @State private var text = ""
+    @State var text: String
     
     var body: some View {
-        VStack {
-            TextField("Enter code", text: $text)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
+        VStack(spacing: 20) {
+//            TextField("Enter code", text: $text)
+//                .textFieldStyle(RoundedBorderTextFieldStyle())
+//                .padding()
+            Text("Scan to join group")
+                .font(.title)
+                .fontWeight(.bold)
+                .fontDesign(.monospaced)
+            
             Image(uiImage: UIImage(data: getQRCodeDate(text: text)!)!)
                 .resizable()
                 .frame(width: 200, height: 200)
@@ -35,6 +40,6 @@ struct QRGeneratorView: View {
 
 struct QRGeneratorView_Previews: PreviewProvider {
     static var previews: some View {
-        QRGeneratorView()
+        QRGeneratorView(text: "")
     }
 }
