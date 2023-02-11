@@ -53,4 +53,20 @@ class GroupManager: ObservableObject {
             
         }
     }
+    
+    func joinGroup(id: String) {
+        if let uid = uid {
+            let ref = db.collection("users")
+            
+            ref.whereField("id", isEqualTo: uid).getDocuments { (result, error) in
+                if error == nil{
+                    for document in result!.documents{
+                        //document.setValue("1", forKey: "isolationDate")
+                        ref.document(document.documentID).setData([ "groupID": id ], merge: true)
+                    }
+                }
+            }
+            
+        }
+    }
 }

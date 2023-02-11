@@ -19,6 +19,7 @@ import FirebaseAuth
 struct HomeView: View {
     @EnvironmentObject private var challengesvm: ChallengesViewModel
     @EnvironmentObject private var userManager: UserManager
+    @EnvironmentObject private var groupManager: GroupManager
     @Environment(\.presentationMode) private var presentationMode
     
     @State private var isShowingScanner = false
@@ -36,9 +37,9 @@ struct HomeView: View {
                 Text("You don't have a group.")
                     .fontDesign(.monospaced)
                 
-//                Text(scannedCode ?? "xvzvz")
-//
-//                Text(userManager.getUserID())
+                //                Text(scannedCode ?? "xvzvz")
+                //
+                //                Text(userManager.getUserID())
                 
                 HStack {
                     Button{
@@ -111,6 +112,10 @@ struct HomeView: View {
                 CodeScannerView(codeTypes: [.qr]) { response in
                     if case let .success(result) = response {
                         scannedCode = result.string
+                        if let splitCode = scannedCode?.split(separator: "_") {
+                            groupManager.joinGroup(id: String(splitCode[1]))
+                        }
+                        
                         isPresentingScanner = false
                     }
                 }
@@ -139,7 +144,7 @@ struct HomeView: View {
         .buttonStyle(.borderedProminent)
         .tint(.black)
         .padding([.leading])
-
+        
     }
     
     private var cameraHelp: some View {
