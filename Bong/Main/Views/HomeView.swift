@@ -60,29 +60,37 @@ struct HomeView: View {
                 Text("You don't have a group.")
                     .fontDesign(.monospaced)
                 
-                Text(scannedCode ?? "xvzvz")
-                
-                Text(userManager.getUserID())
+//                Text(scannedCode ?? "xvzvz")
+//
+//                Text(userManager.getUserID())
                 
                 HStack {
                     Button{
                         isPresentingGroupCreator = true
                     } label: {
                         Text("Create a group")
+                            .foregroundColor(.white)
+                            .fontWeight(.bold)
+                            .fontDesign(.monospaced)
+                            .padding(5)
                     }
                     .buttonStyle(.borderedProminent)
-                    .tint(.red)
+                    .tint(.black)
                     
                     Button{
                         isPresentingScanner = true
                     } label: {
                         Text("Join a group")
+                            .foregroundColor(.white)
+                            .fontWeight(.bold)
+                            .fontDesign(.monospaced)
+                            .padding(5)
                     }
                     .buttonStyle(.borderedProminent)
-                    .tint(.red)
+                    .tint(.black)
                     
-                    .sheet(isPresented: $isPresentingGroupCreator) {
-                        QRGeneratorView()
+                    .fullScreenCover(isPresented: $isPresentingGroupCreator) {
+                        CreateGroupView()
                     }
                     
                     .sheet(isPresented: $isPresentingScanner) {

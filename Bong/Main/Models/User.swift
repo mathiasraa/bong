@@ -9,4 +9,5 @@ import Foundation
 
 struct User: Codable, Identifiable {
     let id: String
+    let groupID: String?
 }

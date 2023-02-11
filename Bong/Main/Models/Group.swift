@@ -8,5 +8,5 @@
 import Foundation
 
 struct Group: Codable, Identifiable {
-    let id: String
+    let name: String
 }

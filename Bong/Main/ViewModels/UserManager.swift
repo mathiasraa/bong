@@ -20,7 +20,6 @@ class UserManager: ObservableObject {
         
         do {
             try await Auth.auth().signInAnonymously()
-            print("YOOOOOO")
         } catch {
             print(error.localizedDescription)
         }
