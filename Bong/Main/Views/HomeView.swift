@@ -16,15 +16,41 @@ import FirebaseFirestore
 import CodeScanner
 import FirebaseAuth
 
-
 struct HomeView: View {
-    @ObservedObject var viewModel = ChallengesViewModel() // (/1)
-    @State private var isShowingScanner = false
+    @EnvironmentObject private var challengesvm: ChallengesViewModel
+    @EnvironmentObject private var userManager: UserManager
     
+    @State private var isShowingScanner = false
     @State private var isPresentingScanner = false
     @State private var isPresentingGroupCreator = false
     @State private var scannedCode: String?
     @State var isInGroup = false
+    
+    // 1
+    //var userId = ""
+    // 2
+     //private let authenticationService = AuthenticationService()
+    // 3
+    //private var cancellables: Set<AnyCancellable> = []
+    
+//    init() {
+//      // 1
+//      authenticationService.$user
+//        .compactMap { user in
+//          user?.uid
+//        }
+//        .assign(to: \.userId, on: self)
+//        .store(in: &cancellables)
+//
+//      // 2
+//      authenticationService.$user
+//        .receive(on: DispatchQueue.main)
+//        .sink { [weak self] _ in
+//          // 3
+//          self?.get()
+//        }
+//        .store(in: &cancellables)
+//    }
     
     var body: some View {
         if (isInGroup) {
@@ -36,7 +62,7 @@ struct HomeView: View {
                 
                 Text(scannedCode ?? "xvzvz")
                 
-                Text(Auth.auth().currentUser?.uid ?? "hei")
+                Text(userManager.getUserID())
                 
                 HStack {
                     Button{

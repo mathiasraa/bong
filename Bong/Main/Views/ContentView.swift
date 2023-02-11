@@ -8,10 +8,15 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject private var userManager: UserManager
+    
     var body: some View {
         HomeView()
             .tabItem {
                 Label("Animation", systemImage: "person")
+            }
+            .task {
+                await userManager.signIn()
             }
 //        TabView {
 //            HomeView()
