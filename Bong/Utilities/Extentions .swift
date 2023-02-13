@@ -35,6 +35,13 @@ extension Text {
             .fontDesign(.monospaced)
             .padding(5)
     }
+    
+    func blackMathiasStyle() -> some View {
+        self
+            .foregroundColor(.black)
+            .fontWeight(.bold)
+            .fontDesign(.monospaced)
+    }
 }
 
 

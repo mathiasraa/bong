@@ -42,6 +42,10 @@
 		B74CCA672999EE76000E64FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74CCA662999EE76000E64FA /* AppDelegate.swift */; };
 		B74CCA692999F5DF000E64FA /* UtilityStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74CCA682999F5DF000E64FA /* UtilityStructs.swift */; };
 		B74CCA6B2999F7D3000E64FA /* UtilityFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74CCA6A2999F7D3000E64FA /* UtilityFunctions.swift */; };
+		B74CCA74299A109C000E64FA /* GroupBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74CCA73299A109C000E64FA /* GroupBarView.swift */; };
+		B74CCA76299A15B5000E64FA /* GroupScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74CCA75299A15B5000E64FA /* GroupScrollView.swift */; };
+		B74CCA79299A1704000E64FA /* GroupMembersBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74CCA78299A1704000E64FA /* GroupMembersBox.swift */; };
+		B74CCA7F299A1E96000E64FA /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74CCA7E299A1E96000E64FA /* ProfileView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +94,10 @@
 		B74CCA662999EE76000E64FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B74CCA682999F5DF000E64FA /* UtilityStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityStructs.swift; sourceTree = "<group>"; };
 		B74CCA6A2999F7D3000E64FA /* UtilityFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityFunctions.swift; sourceTree = "<group>"; };
+		B74CCA73299A109C000E64FA /* GroupBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupBarView.swift; sourceTree = "<group>"; };
+		B74CCA75299A15B5000E64FA /* GroupScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupScrollView.swift; sourceTree = "<group>"; };
+		B74CCA78299A1704000E64FA /* GroupMembersBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMembersBox.swift; sourceTree = "<group>"; };
+		B74CCA7E299A1E96000E64FA /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,17 +158,15 @@
 		4F3C193B2994DC9F002C3694 /* Bong */ = {
 			isa = PBXGroup;
 			children = (
+				B74CCA7A299A1E5B000E64FA /* Profile */,
+				B74CCA70299A0EB0000E64FA /* ExtraJuicyShit */,
+				B74CCA6C299A0D91000E64FA /* Group */,
 				B717C61F2997790C0005D464 /* Utilities */,
 				4F3C19BD29973A69002C3694 /* Main */,
 				4F3C193C2994DC9F002C3694 /* BongApp.swift */,
 				4F3C19402994DCA0002C3694 /* Assets.xcassets */,
 				B717C62C2999E6DE0005D464 /* GoogleService-Info.plist */,
 				4F3C19422994DCA0002C3694 /* Preview Content */,
-				4F3C1987299581BE002C3694 /* SheetView.swift */,
-				4F3C198E2995B122002C3694 /* Card.swift */,
-				4F3C19AD29962745002C3694 /* AnimationView.swift */,
-				4F3C19B129962E82002C3694 /* FinishedView.swift */,
-				4F3C19B82996421E002C3694 /* QRGeneratorView.swift */,
 			);
 			path = Bong;
 			sourceTree = "<group>";
@@ -205,8 +211,6 @@
 			children = (
 				4F3C193E2994DC9F002C3694 /* BongView.swift */,
 				4F3C198C2995AF41002C3694 /* SetupView.swift */,
-				4F51F9EF29974E1700756E9E /* CreateGroupView.swift */,
-				4F51F9F12997764700756E9E /* GroupView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -215,7 +219,6 @@
 			isa = PBXGroup;
 			children = (
 				4F3C19C329974168002C3694 /* User.swift */,
-				4F3C19C5299743EC002C3694 /* Group.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -225,7 +228,6 @@
 			children = (
 				4F3C19A92995C9F4002C3694 /* ChallengesViewModel.swift */,
 				4F3C19C129973B96002C3694 /* UserManager.swift */,
-				4F51F9F3299778ED00756E9E /* GroupManager.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -239,6 +241,96 @@
 				B74CCA6A2999F7D3000E64FA /* UtilityFunctions.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		B74CCA6C299A0D91000E64FA /* Group */ = {
+			isa = PBXGroup;
+			children = (
+				B74CCA6D299A0D9E000E64FA /* Models */,
+				B74CCA6E299A0DAA000E64FA /* ViewModels */,
+				B74CCA6F299A0E1E000E64FA /* Views */,
+			);
+			path = Group;
+			sourceTree = "<group>";
+		};
+		B74CCA6D299A0D9E000E64FA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4F3C19C5299743EC002C3694 /* Group.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B74CCA6E299A0DAA000E64FA /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				4F51F9F3299778ED00756E9E /* GroupManager.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		B74CCA6F299A0E1E000E64FA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B74CCA77299A16E5000E64FA /* GroupFeedItems */,
+				4F51F9EF29974E1700756E9E /* CreateGroupView.swift */,
+				4F51F9F12997764700756E9E /* GroupView.swift */,
+				B74CCA73299A109C000E64FA /* GroupBarView.swift */,
+				B74CCA75299A15B5000E64FA /* GroupScrollView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B74CCA70299A0EB0000E64FA /* ExtraJuicyShit */ = {
+			isa = PBXGroup;
+			children = (
+				4F3C1987299581BE002C3694 /* SheetView.swift */,
+				4F3C198E2995B122002C3694 /* Card.swift */,
+				4F3C19AD29962745002C3694 /* AnimationView.swift */,
+				4F3C19B129962E82002C3694 /* FinishedView.swift */,
+				4F3C19B82996421E002C3694 /* QRGeneratorView.swift */,
+			);
+			path = ExtraJuicyShit;
+			sourceTree = "<group>";
+		};
+		B74CCA77299A16E5000E64FA /* GroupFeedItems */ = {
+			isa = PBXGroup;
+			children = (
+				B74CCA78299A1704000E64FA /* GroupMembersBox.swift */,
+			);
+			path = GroupFeedItems;
+			sourceTree = "<group>";
+		};
+		B74CCA7A299A1E5B000E64FA /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				B74CCA7B299A1E65000E64FA /* Models */,
+				B74CCA7C299A1E6D000E64FA /* ViewModels */,
+				B74CCA7D299A1E77000E64FA /* Views */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		B74CCA7B299A1E65000E64FA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B74CCA7C299A1E6D000E64FA /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		B74CCA7D299A1E77000E64FA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B74CCA7E299A1E96000E64FA /* ProfileView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -392,17 +484,21 @@
 				4F3C1988299581BE002C3694 /* SheetView.swift in Sources */,
 				B74CCA692999F5DF000E64FA /* UtilityStructs.swift in Sources */,
 				4F3C19AA2995C9F4002C3694 /* ChallengesViewModel.swift in Sources */,
+				B74CCA76299A15B5000E64FA /* GroupScrollView.swift in Sources */,
 				4F51F9F22997764700756E9E /* GroupView.swift in Sources */,
+				B74CCA79299A1704000E64FA /* GroupMembersBox.swift in Sources */,
 				4F51F9F029974E1800756E9E /* CreateGroupView.swift in Sources */,
 				4F3C198F2995B122002C3694 /* Card.swift in Sources */,
 				4F3C193F2994DC9F002C3694 /* BongView.swift in Sources */,
 				4F3C19B92996421E002C3694 /* QRGeneratorView.swift in Sources */,
 				4F3C19C6299743EC002C3694 /* Group.swift in Sources */,
 				4F3C19B229962E82002C3694 /* FinishedView.swift in Sources */,
+				B74CCA74299A109C000E64FA /* GroupBarView.swift in Sources */,
 				B74CCA6B2999F7D3000E64FA /* UtilityFunctions.swift in Sources */,
 				4F3C19AE29962745002C3694 /* AnimationView.swift in Sources */,
 				4F3C19C429974168002C3694 /* User.swift in Sources */,
 				4F3C198D2995AF41002C3694 /* SetupView.swift in Sources */,
+				B74CCA7F299A1E96000E64FA /* ProfileView.swift in Sources */,
 				4F3C19C229973B96002C3694 /* UserManager.swift in Sources */,
 				B717C62329977D4C0005D464 /* Extentions .swift in Sources */,
 				4F3C193D2994DC9F002C3694 /* BongApp.swift in Sources */,

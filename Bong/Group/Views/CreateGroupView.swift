@@ -14,8 +14,10 @@ struct CreateGroupView: View {
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject private var groupManager: GroupManager
     
-    @State private var groupName: String = ""
+    @State private var chosenName: String = ""
     @State private var showDisclaimer: Bool = false
+    
+    @AppStorage("groupName") private var groupName = ""
     
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -57,7 +59,7 @@ struct CreateGroupView: View {
         HStack {
             TextField(
                 "Name your group",
-                text: $groupName
+                text: $chosenName
             )
         }
         .textFieldStyle(CustomTextFieldStyle())
@@ -70,9 +72,10 @@ struct CreateGroupView: View {
     
     private var createGroupButton: some View {
         Button {
-            if groupManager.isValidGroupName(groupName) {
-                groupManager.createGroup(group: Group(id: UUID().uuidString, name: groupName))
+            if groupManager.isValidGroupName(chosenName) {
+                groupManager.createGroup(group: Group(id: UUID().uuidString, name: chosenName))
                 getTapticFeedBack(style: .rigid)
+                self.groupName = chosenName
             } else {
                 self.showDisclaimer = true
             }

@@ -10,6 +10,7 @@ import FirebaseAuth
 import Firebase
 import SwiftUI
 import FirebaseFirestoreSwift
+import FirebaseFirestore
 
 class UserManager: ObservableObject {
     private let db = Firestore.firestore()

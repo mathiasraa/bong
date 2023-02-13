@@ -20,7 +20,7 @@ class GroupManager: ObservableObject {
     func createGroup(group: Group) {
         let ref = db.collection("groups")
         let docRef = ref.addDocument(data: [
-            "id": group.id,
+            "id": group.id ?? "",
             "name" : group.name
         ])
         
