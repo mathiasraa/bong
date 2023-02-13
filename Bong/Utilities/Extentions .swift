@@ -19,10 +19,21 @@ extension Text {
     
     func rectStyle(_ color: Color) -> some View {
         self
+            .fontDesign(.monospaced)
+            .fontWeight(.semibold)
+            .foregroundColor(.white)
             .padding(EdgeInsets(top: 20, leading: 25, bottom: 20, trailing: 25))
             .foregroundColor(.white)
             .background(RoundedRectangle(cornerSize: CGSize(width: 8, height: 8)).foregroundColor(color))
 //            .shadow(radius: 5)
+    }
+    
+    func mathiasStyle() -> some View {
+        self
+            .foregroundColor(.white)
+            .fontWeight(.bold)
+            .fontDesign(.monospaced)
+            .padding(5)
     }
 }
 

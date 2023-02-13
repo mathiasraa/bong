@@ -8,7 +8,7 @@
 import SwiftUI
 import Firebase
 import FirebaseAuth
-
+import FirebaseFirestore
 
 struct GroupView: View {
     @EnvironmentObject private var userManager: UserManager

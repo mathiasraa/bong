@@ -16,7 +16,7 @@ import FirebaseFirestore
 import CodeScanner
 import FirebaseAuth
 
-struct HomeView: View {
+struct SetupView: View {
     @EnvironmentObject private var challengesvm: ChallengesViewModel
     @EnvironmentObject private var userManager: UserManager
     @EnvironmentObject private var groupManager: GroupManager
@@ -26,7 +26,7 @@ struct HomeView: View {
     @State private var isPresentingScanner = false
     @State private var isPresentingGroupCreator = false
     @State private var scannedCode: String?
-    @State var isInGroup = false
+    @State private var isInGroup = false
     
     
     var body: some View {
@@ -37,54 +37,23 @@ struct HomeView: View {
                 Text("You don't have a group.")
                     .fontDesign(.monospaced)
                 
+                
                 //                Text(scannedCode ?? "xvzvz")
                 //
                 //                Text(userManager.getUserID())
                 
                 HStack {
-                    Button{
-                        isPresentingGroupCreator = true
-                    } label: {
-                        Text("Create a group")
-                            .foregroundColor(.white)
-                            .fontWeight(.bold)
-                            .fontDesign(.monospaced)
-                            .padding(5)
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .tint(.black)
-                    
-                    Button{
-                        userManager.signOut()
-                    } label: {
-                        Text("Logg ut")
-                            .foregroundColor(.white)
-                            .fontWeight(.bold)
-                            .fontDesign(.monospaced)
-                            .padding(5)
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .tint(.black)
-                    
-                    Button{
-                        isPresentingScanner = true
-                    } label: {
-                        Text("Join a group")
-                            .foregroundColor(.white)
-                            .fontWeight(.bold)
-                            .fontDesign(.monospaced)
-                            .padding(5)
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .tint(.black)
-                    
-                    .fullScreenCover(isPresented: $isPresentingGroupCreator) {
-                        CreateGroupView()
-                    }
-                    .fullScreenCover(isPresented: $isPresentingScanner, content: {
-                        cameraView
-                    })
+                    createGroupButton
+                    signOutButton
+                    joinGroupButton
                 }
+                .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
+                .fullScreenCover(isPresented: $isPresentingGroupCreator) {
+                    CreateGroupView()
+                }
+                .fullScreenCover(isPresented: $isPresentingScanner, content: {
+                    cameraView
+                })
             }
         }
         
@@ -101,9 +70,37 @@ struct HomeView: View {
         //        }
     }
     
-    func handleScan(result: Result<ScanResult, ScanError>) {
-        isShowingScanner = false
-        // more code to come
+    private var createGroupButton: some View {
+        Button {
+            isPresentingGroupCreator = true
+        } label: {
+            Text("Create a group")
+                .mathiasStyle()
+        }
+        .buttonStyle(.borderedProminent)
+        .tint(.black)
+    }
+    
+    private var signOutButton: some View {
+        Button {
+            userManager.signOut()
+        } label: {
+            Text("Logg ut")
+                .mathiasStyle()
+        }
+        .buttonStyle(.borderedProminent)
+        .tint(.black)
+    }
+    
+    private var joinGroupButton: some View {
+        Button {
+            isPresentingScanner = true
+        } label: {
+            Text("Join a group")
+                .mathiasStyle()
+        }
+        .buttonStyle(.borderedProminent)
+        .tint(.black)
     }
     
     private var cameraView: some View {
@@ -149,12 +146,15 @@ struct HomeView: View {
     
     private var cameraHelp: some View {
         Text("Please scan a valid QR code to find a group.")
-            .fontDesign(.monospaced)
-            .fontWeight(.semibold)
-            .foregroundColor(.white)
             .rectStyle(.black)
             .padding()
     }
+    
+    private func handleScan(result: Result<ScanResult, ScanError>) {
+        isShowingScanner = false
+        // more code to come
+    }
+    
     
 }
 
@@ -166,8 +166,22 @@ struct HomeCardModifier: ViewModifier {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        SetupView()
     }
 }

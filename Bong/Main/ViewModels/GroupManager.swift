@@ -10,6 +10,7 @@ import FirebaseAuth
 import Firebase
 import SwiftUI
 import FirebaseFirestoreSwift
+import FirebaseFirestore
 
 class GroupManager: ObservableObject {
     private let db = Firestore.firestore()
@@ -67,6 +68,15 @@ class GroupManager: ObservableObject {
                 }
             }
             
+        }
+    }
+    
+    // NEEDS TO BE REFINED
+    func isValidGroupName(_ name: String) -> Bool {
+        if name.isEmpty {
+            return false
+        } else {
+            return true
         }
     }
 }

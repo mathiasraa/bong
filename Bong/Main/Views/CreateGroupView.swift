@@ -7,16 +7,7 @@
 
 import SwiftUI
 import Firebase
-
-
-struct CustomTextFieldStyle: TextFieldStyle {
-    func _body(configuration: TextField<Self._Label>) -> some View {
-        configuration
-            .padding(20)
-            .background(Color(red: 0, green: 0, blue: 0, opacity: 0.05))
-            .cornerRadius(8)
-    }
-}
+import FirebaseFirestore
 
 struct CreateGroupView: View {
     //1
@@ -24,10 +15,11 @@ struct CreateGroupView: View {
     @EnvironmentObject private var groupManager: GroupManager
     
     @State private var groupName: String = ""
-    private let db = Firestore.firestore()
+    @State private var showDisclaimer: Bool = false
     
     var body: some View {
-        VStack {
+        ZStack(alignment: .bottom) {
+
             //            //2
             //            HStack {
             //                Spacer()
@@ -38,46 +30,91 @@ struct CreateGroupView: View {
             //                    .tint(.black)
             //                    .fontDesign(.monospaced)
             //            }
-            Spacer()
-            VStack(spacing: 20) {
-                HStack {
-                    TextField(
-                        "Name your group",
-                        text: $groupName
-                    )
-                }
-                .textFieldStyle(CustomTextFieldStyle())
-                .frame(maxWidth: 300, alignment: .center)
-                .fontDesign(.monospaced)
-                .font(.title3)
-                .fontWeight(.bold)
-                .disableAutocorrection(true)
-                Button{
-                    groupManager.createGroup(group: Group(id: UUID().uuidString, name: groupName))
-                } label: {
-                    Text("Create group")
-                        .foregroundColor(.white)
-                        .fontWeight(.bold)
-                        .fontDesign(.monospaced)
-                        .padding(5)
-                }
-                .buttonStyle(.borderedProminent)
-                .tint(.black)
-                Button{
-                    self.presentationMode.wrappedValue.dismiss()
-                } label: {
-                    Text("Cancel")
-                        .fontWeight(.bold)
-                        .fontDesign(.monospaced)
-                        .padding(5)
-                }
-                .tint(.black)
-            }
-            Spacer()
             
+            VStack(spacing: 20) {
+                
+                Spacer()
+                nameGroupTextfield
+                createGroupButton
+                cancelButton
+                Spacer()
+                
+            }
+            
+            if showDisclaimer {
+                VStack {
+                    Spacer()
+                    
+                    withAnimation {
+                        disclaimer
+                    }
+                }
+            }
         }
     }
+    
+    private var nameGroupTextfield: some View {
+        HStack {
+            TextField(
+                "Name your group",
+                text: $groupName
+            )
+        }
+        .textFieldStyle(CustomTextFieldStyle())
+        .frame(maxWidth: 300, alignment: .center)
+        .fontDesign(.monospaced)
+        .font(.title3)
+        .fontWeight(.bold)
+        .disableAutocorrection(true)
+    }
+    
+    private var createGroupButton: some View {
+        Button {
+            if groupManager.isValidGroupName(groupName) {
+                groupManager.createGroup(group: Group(id: UUID().uuidString, name: groupName))
+                getTapticFeedBack(style: .rigid)
+            } else {
+                self.showDisclaimer = true
+            }
+        } label: {
+            Text("Create group")
+                .mathiasStyle()
+        }
+        .buttonStyle(.borderedProminent)
+        .tint(.black)
+    }
+    
+    private var cancelButton: some View {
+        Button {
+            self.presentationMode.wrappedValue.dismiss()
+        } label: {
+            Text("Cancel")
+                .fontWeight(.bold)
+                .fontDesign(.monospaced)
+                .padding(5)
+        }
+        .tint(.black)
+    }
+    
+    private var disclaimer: some View {
+        Text("Make sure that the name is not empty or already taken.")
+            .rectStyle(.black)
+            .padding()
+            .onAppear {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    withAnimation {
+                        showDisclaimer = false
+                    }
+                }
+            }
+    }
 }
+
+
+
+
+
+
 
 struct CreateGroupView_Previews: PreviewProvider {
     static var previews: some View {

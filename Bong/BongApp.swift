@@ -12,32 +12,26 @@ import FirebaseAuth
 
 @main
 struct BongApp: App {
-    // register app delegate for Firebase setup
+ 
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
     @StateObject private var userManager = UserManager()
     @StateObject private var groupManager = GroupManager()
     @StateObject private var challengesvm = ChallengesViewModel()
+    
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                ContentView()
+                BongView()
                     .environmentObject(challengesvm)
                     .environmentObject(userManager)
                     .environmentObject(groupManager)
+                    .preferredColorScheme(.light)
+            }
+            .onAppear {
+                portraitOrientationLock()
             }
         }
     }
 }
 
-class AppDelegate: NSObject, UIApplicationDelegate {
-    var window: UIWindow?
-    
-    func application(_ application: UIApplication,
-                     didFinishLaunchingWithOptions launchOptions: [UIApplication
-                        .LaunchOptionsKey: Any]?) -> Bool {
-                            FirebaseApp.configure()
-                                                        
-                            return true
-                        }
-}

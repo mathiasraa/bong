@@ -74,6 +74,7 @@ class UserManager: ObservableObject {
         //        }
     }
     
+    // FOR DEBUGGING 
     func signOut() {
         do {
             try Auth.auth().signOut()
